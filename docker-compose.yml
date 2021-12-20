@@ -1,0 +1,12 @@
+services:
+  front:
+    build: ./front/.
+    ports:
+      - 3000:3000
+    depends_on:
+      - back
+    command: ./wait-for.sh back:5000 -- npx serve /app/build
+  back:
+    build: ./back/.
+    ports:
+      - 5000:5000
