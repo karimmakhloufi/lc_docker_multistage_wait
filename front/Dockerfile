@@ -22,8 +22,4 @@ WORKDIR /app
 
 COPY --from=builder /app/build /app/build
 
-COPY wait-for.sh /app/
-
-RUN chmod +x wait-for.sh
-
 CMD npx serve /app/build

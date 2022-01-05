@@ -4,9 +4,14 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - back
-    command: ./wait-for.sh back:5000 -- npx serve /app/build
+      back:
+        condition: service_healthy
   back:
     build: ./back/.
     ports:
       - 5000:5000
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000 || exit 1"]
+      timeout: 10s
+      interval: 10s
+      retries: 10

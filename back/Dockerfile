@@ -22,6 +22,8 @@ WORKDIR /app
 
 COPY --from=builder /app/build /app/build
 
+RUN apk --no-cache add curl
+
 COPY package*.json ./
 
 RUN npm install
