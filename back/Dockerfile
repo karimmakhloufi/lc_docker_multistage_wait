@@ -26,6 +26,6 @@ RUN apk --no-cache add curl
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --production
 
 CMD npm start
