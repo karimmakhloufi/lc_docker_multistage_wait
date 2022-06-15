@@ -24,6 +24,8 @@ COPY --from=builder /app/build /app/build
 
 RUN apk --no-cache add curl
 
+ENV REQUEST_ORIGIN=http://127.0.0.1:5000/
+
 COPY package*.json ./
 
 RUN npm install --production
